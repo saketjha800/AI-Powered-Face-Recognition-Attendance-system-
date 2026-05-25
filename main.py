@@ -329,7 +329,7 @@ is developed using Python, Tkinter & OpenCV.
 
         # Resume Button
         def open_resume():
-            resume_path = r"C:\Users\ritik\Desktop\CV of saket jha.pdf"  # अपना resume path दें
+            resume_path = r"C:\Users\ritik\Desktop\CV saket jha1.pdf"  # अपना resume path दें
             if os.path.exists(resume_path):
                 os.startfile(resume_path)  # resume open होगा
             else:
