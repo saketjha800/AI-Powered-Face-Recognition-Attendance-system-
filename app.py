@@ -5,14 +5,14 @@ import numpy as np
 import os
 from datetime import datetime
 
-
+# पेज की सेटिंग (चौड़ाई और टाइटल)
 st.set_page_config(page_title="AI Face Recognition Attendance System", layout="wide")
 
-
+# मुख्य हेडिंग (जैसा आपके Tkinter डैशबोर्ड में था)
 st.markdown("<h1 style='text-align: center; color: #00b4d8;'>AI-POWERED FACE RECOGNITION ATTENDANCE SYSTEM</h1>", unsafe_allow_html=True)
 st.write("---")
 
-
+# लेफ्ट साइडबार में मेनू (सारे फीचर्स को जोड़ने के लिए)
 st.sidebar.title("🎛️ Control Panel")
 choice = st.sidebar.radio("Go To Section:", [
     "🖥️ Home / Dashboard", 
@@ -22,11 +22,12 @@ choice = st.sidebar.radio("Go To Section:", [
     "📊 Attendance Record"
 ])
 
+# फाइल सेटिंग्स
 ATTENDANCE_FILE = "attendance.csv"
 if not os.path.exists(ATTENDANCE_FILE):
     pd.DataFrame(columns=["Name", "Date", "Time"]).to_csv(ATTENDANCE_FILE, index=False)
 
-
+# ----------------- SECTION 1: HOME DASHBOARD -----------------
 if choice == "🖥️ Home / Dashboard":
     st.subheader("Welcome to the AI Attendance System")
     st.info("बाएं हाथ (Sidebar) पर दिए गए विकल्पों का उपयोग करके अलग-अलग फीचर्स को चलाएं।")
