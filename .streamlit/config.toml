@@ -1,0 +1,134 @@
+"""
+=========================================================
+AI Powered Face Recognition Attendance System
+Configuration File
+=========================================================
+"""
+
+from pathlib import Path
+
+# ==========================================================
+# PROJECT PATHS
+# ==========================================================
+
+BASE_DIR = Path(__file__).resolve().parent
+
+# Assets
+ASSETS_DIR = BASE_DIR / "assets"
+
+# Database
+DATA_DIR = BASE_DIR / "data"
+DATABASE_DIR = DATA_DIR / "database"
+DATABASE_PATH = DATABASE_DIR / "attendance.db"
+
+# Dataset
+DATASET_DIR = DATA_DIR / "dataset"
+
+# Attendance CSV
+ATTENDANCE_DIR = DATA_DIR / "attendance"
+
+# Models
+MODEL_DIR = BASE_DIR / "models"
+
+CLASSIFIER_PATH = MODEL_DIR / "classifier.xml"
+
+CASCADE_PATH = MODEL_DIR / "haarcascade_frontalface_default.xml"
+
+LABELS_PATH = MODEL_DIR / "labels.json"
+
+# Logs
+LOG_DIR = BASE_DIR / "logs"
+
+# ==========================================================
+# CREATE DIRECTORIES
+# ==========================================================
+
+DATABASE_DIR.mkdir(parents=True, exist_ok=True)
+DATASET_DIR.mkdir(parents=True, exist_ok=True)
+ATTENDANCE_DIR.mkdir(parents=True, exist_ok=True)
+MODEL_DIR.mkdir(parents=True, exist_ok=True)
+LOG_DIR.mkdir(parents=True, exist_ok=True)
+
+# ==========================================================
+# CAMERA SETTINGS
+# ==========================================================
+
+DEFAULT_CAMERA = 0
+
+FRAME_WIDTH = 640
+
+FRAME_HEIGHT = 480
+
+FACE_WIDTH = 200
+
+FACE_HEIGHT = 200
+
+TOTAL_FACE_IMAGES = 100
+
+# ==========================================================
+# FACE DETECTION
+# ==========================================================
+
+SCALE_FACTOR = 1.2
+
+MIN_NEIGHBORS = 5
+
+MIN_FACE_SIZE = (100,100)
+
+# ==========================================================
+# FACE RECOGNITION
+# ==========================================================
+
+CONFIDENCE_THRESHOLD = 60
+
+# ==========================================================
+# TRAIN MODEL
+# ==========================================================
+
+MODEL_NAME = "LBPH Face Recognizer"
+
+MODEL_FILE = "classifier.xml"
+
+ALGORITHM = "LBPH"
+
+# ==========================================================
+# DASHBOARD
+# ==========================================================
+
+APP_TITLE = "AI Powered Face Recognition Attendance System"
+
+APP_VERSION = "Version 2.0"
+
+COMPANY = "BIT Gorakhpur"
+
+# ==========================================================
+# DEVELOPER
+# ==========================================================
+
+DEVELOPER = "Saket Jha"
+
+EMAIL = "your_email@gmail.com"
+
+GITHUB = "https://github.com/yourusername"
+
+LINKEDIN = "https://linkedin.com/in/yourprofile"
+
+# ==========================================================
+# EXPORT
+# ==========================================================
+
+CSV_NAME = "attendance.csv"
+
+EXCEL_NAME = "attendance.xlsx"
+
+# ==========================================================
+# THEME
+# ==========================================================
+
+PRIMARY_COLOR = "#1565C0"
+
+BACKGROUND = "#F5F7FB"
+
+CARD_COLOR = "#FFFFFF"
+
+TEXT_COLOR = "#000000"
