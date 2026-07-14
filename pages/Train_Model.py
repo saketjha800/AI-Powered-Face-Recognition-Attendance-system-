@@ -36,134 +36,117 @@ initialize_database()
 st.markdown("""
 <style>
 
-/* 🌌 पूरे मुख्य पेज का बैकग्राउंड */
-.stApp, .main {
+/* 🌌 पूरे मुख्य पेज का बैकग्राउंड और लेआउट */
+.stApp {
     background-color: #E0E0E0 !important; 
 }
 
-/* 🔵 साइडबार का बैकग्राउंड... */
-[data-testid="stSidebar"] {
-    background-color: #E0F7FA !important; 
-}
-
-/* 🎨 मुख्य हेडिंग का कलर */
-.main h1, h1 span {
-    color:   #B71C1C !important;
-}
-
-/* ==========================================================
-   🚨 क्लिक करने की समस्या को फिक्स करने का कोड (Z-INDEX & POINTER EVENTS)
-   ========================================================== */
-
-/* ⚙️ हेडर बार की क्लिक-थ्रू सेटिंग्स ताकि इसके नीचे के बटन क्लिक हो सकें */
-div[data-testid="stHeader"], header {
-    background-color: #1A237E !important;
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: space-between !important; 
-    align-items: center !important;
-    height: 3.5rem !important;
-    pointer-events: none !important; /* 👈 हेडर खुद माउस क्लिक नहीं रोकेगा */
-    z-index: 999 !important;
-}
-
-/* 📄 पेजों की लिस्ट - इसे सबसे ऊपर (Front) लाएंगे ताकि क्लिक हो सके */
-div[data-testid="stSidebarNav"] {
-    position: fixed !important;
-    top: 8px !important;
-    left: 350px !important; 
-    z-index: 999999 !important; /* 👈 सबसे ऊपर की परत */
-    background: transparent !important;
-    width: auto !important;
-    pointer-events: auto !important; /* 👈 इसपर माउस क्लिक काम करेगा */
-}
-
-/* पेजों के अंदर के <ul> (List) को हॉरिजॉन्टल अरेंज करना */
-div[data-testid="stSidebarNav"] ul {
-    display: flex !important;
-    flex-direction: row !important; 
-    gap: 15px !important;          
-    list-style: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    pointer-events: auto !important;
-}
-
-/* पेजों के लिंक्स और बटन्स */
-div[data-testid="stSidebarNav"] ul li {
-    padding: 5px 10px !important;
-    background-color: #F8F9FA !important;
-    border-radius: 5px !important;
-    box-shadow: 0px 2px 5px rgba(0,0,0,0.05) !important;
-    pointer-events: auto !important;
-}
-
-/* बटन के अंदर के टेक्स्ट/लिंक को भी क्लिकेबल बनाना */
-div[data-testid="stSidebarNav"] ul li a {
+.stMain, .main, [data-testid="stMain"] {
     pointer-events: auto !important;
     display: block !important;
 }
 
-/* 🔘 Deploy बटन को टॉप-राइट हेडर लाइन में फिक्स करना */
+/* 🔵 साइडबार का बैकग्राउंड */
+[data-testid="stSidebar"] {
+    background-color: #FFFFFF !important; 
+}
+
+/* 🎨 मुख्य हेडिंग का कलर */
+.main h1, h1 span {
+    color: #1A237E !important; 
+}
+
+/* ==========================================================
+   🚨 फिक्स्ड टॉप बार और बटन्स (3-DOTS REMOVED)
+   ========================================================== */
+
+/* ⚙️ सफेद हेडर बार */
+div[data-testid="stHeader"], header {
+    background-color: #E3F2FD !important; 
+    height: 3.8rem !important; 
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    pointer-events: none !important; 
+    z-index: 99999 !important; 
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.1) !important; 
+}
+
+/* 📄 हॉरिजॉन्टल नेविगेशन बटन्स - अब इन्हें थोड़ा और दाईं तरफ (right: 120px) खिसका दिया है क्योंकि 3-dots हट गया है */
+div[data-testid="stSidebarNav"] {
+    position: fixed !important; 
+    top: 14px !important;       
+    right: 125px !important;    /* 👈 Deploy बटन के ठीक बाईं तरफ परफेक्ट स्पेसिंग */
+    left: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    width: auto !important;
+    z-index: 100000 !important;
+    pointer-events: auto !important; 
+}
+
+/* पेजों की लिस्ट को एक लाइन में करना */
+div[data-testid="stSidebarNav"] ul {
+    display: flex !important;
+    flex-direction: row !important; 
+    gap: 8px !important; 
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* बटन्स का सुंदर लेआउट */
+div[data-testid="stSidebarNav"] ul li {
+    padding: 5px 12px !important;
+    background-color: #F1F3F4 !important; 
+    border: 1px solid #DADCE0 !important;
+    border-radius: 4px !important;
+    white-space: nowrap !important; 
+}
+
+div[data-testid="stSidebarNav"] ul li a span {
+    color: #202124 !important; 
+    font-weight: 500 !important;
+}
+
+/* 🔘 Deploy बटन की सेटिंग्स - इसे अब कोने के पास (right: 20px) सेट किया है */
 div[data-testid="stAppDeployButton"], 
 div[data-testid="stActionButton"],
 .stAppDeployButton {
     position: fixed !important;
-    top: 10px !important;
-    right: 70px !important; 
-    z-index: 999999 !important; /* 👈 डिप्लॉय बटन को भी ऊपर लाया */
+    top: 14px !important;
+    right: 20px !important; /* 👈 बिल्कुल कोने में फिक्स */
+    left: auto !important;
+    z-index: 100000 !important;
     pointer-events: auto !important;
 }
 
-/* 🔘 Deploy बटन का ग्रे कलर स्टाइल */
 div[data-testid="stAppDeployButton"] button,
 .stAppDeployButton button {
-    background-color: #757575 !important; 
-    color: #FFFFFF !important;            
-    border: 1px solid #616161 !important;
-    border-radius: 6px !important;
+    background-color: #1A237E !important; 
+    color: #E3F2FD !important;            
+    border: none !important;
+    border-radius: 4px !important;
+    font-weight: bold !important;
+    height: 32px !important;
 }
 
-/* 🔘 3-Dots (Menu Button) */
+/* 🔘 3-Dots (Menu Button) को पूरी तरह छुपाया */
 div[data-testid="stToolbar"] {
-    position: fixed !important;
-    top: 10px !important;
-    right: 15px !important;
-    z-index: 999999 !important;
-    pointer-events: auto !important;
+    display: none !important; /* 👈 3-dots अब नहीं दिखेगा */
 }
 
-/* 🪟 साइडबार के टॉप गैप को हटाना */
-div[data-testid="stSidebarUserContent"] {
-    padding-top: 0rem !important;
-}
-
-/* ========================================================== */
-
-/* 🟢 सिस्टम स्टेटस वाले कार्ड्स का स्टाइल */
-div[data-testid="element-container"] .stAlert,
-div[data-testid="stNotificationBody"] {
-    background-color: #E0F2F1 !important; 
-    color: #1A237E !important; 
-}
-
-.block-container{
-    padding-top:1rem;
-    padding-bottom:1rem;
-}
-
-.metric-card{
-    background:white;
-    border-radius:15px;
-    padding:20px;
-    box-shadow:0px 4px 15px rgba(0,0,0,.08);
+/* 📦 मुख्य कंटेंट का स्पेसिंग */
+.block-container {
+    padding-top: 5rem !important; 
+    padding-bottom: 1rem !important;
+    pointer-events: auto !important; 
 }
 
 </style>
 """, unsafe_allow_html=True)
-
-
-
 
 
 
