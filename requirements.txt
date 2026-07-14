@@ -2,5 +2,3 @@ streamlit
 opencv-contrib-python-headless
 pandas
 openpyxl
-pillow
-numpy
