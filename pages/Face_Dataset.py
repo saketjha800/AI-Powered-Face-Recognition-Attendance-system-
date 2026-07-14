@@ -29,55 +29,133 @@ initialize_database()
 # ==========================================================
 st.markdown("""
 <style>
+
 /* 🌌 पूरे मुख्य पेज का बैकग्राउंड */
 .stApp, .main {
     background-color: #E0E0E0 !important; 
 }
-/* 🔵 साइडबार का बैकग्राउंड कलर */
+
+/* 🔵 साइडबार का बैकग्राउंड... */
 [data-testid="stSidebar"] {
     background-color: #E0F7FA !important; 
 }
+
 /* 🎨 मुख्य हेडिंग का कलर */
 .main h1, h1 span {
-    color: #1A237E !important;
+    color:   #B71C1C !important;
 }
-/* ⚙️ हेडर बार की सेटिंग्स */
+
+/* ==========================================================
+   🚨 क्लिक करने की समस्या को फिक्स करने का कोड (Z-INDEX & POINTER EVENTS)
+   ========================================================== */
+
+/* ⚙️ हेडर बार की क्लिक-थ्रू सेटिंग्स ताकि इसके नीचे के बटन क्लिक हो सकें */
 div[data-testid="stHeader"], header {
-    background-color: transparent !important;
+    background-color: #1A237E !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important; 
+    align-items: center !important;
+    height: 3.5rem !important;
+    pointer-events: none !important; /* 👈 हेडर खुद माउस क्लिक नहीं रोकेगा */
+    z-index: 999 !important;
 }
-/* 🔘 Deploy बटन को ग्रे कलर करना */
-div[data-testid="stActionButton"] button,
-button[data-testid="stDeployButton"] {
-    background-color: #757575 !important;
+
+/* 📄 पेजों की लिस्ट - इसे सबसे ऊपर (Front) लाएंगे ताकि क्लिक हो सके */
+div[data-testid="stSidebarNav"] {
+    position: fixed !important;
+    top: 8px !important;
+    left: 350px !important; 
+    z-index: 999999 !important; /* 👈 सबसे ऊपर की परत */
+    background: transparent !important;
+    width: auto !important;
+    pointer-events: auto !important; /* 👈 इसपर माउस क्लिक काम करेगा */
+}
+
+/* पेजों के अंदर के <ul> (List) को हॉरिजॉन्टल अरेंज करना */
+div[data-testid="stSidebarNav"] ul {
+    display: flex !important;
+    flex-direction: row !important; 
+    gap: 15px !important;          
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    pointer-events: auto !important;
+}
+
+/* पेजों के लिंक्स और बटन्स */
+div[data-testid="stSidebarNav"] ul li {
+    padding: 5px 10px !important;
+    background-color: #F8F9FA !important;
+    border-radius: 5px !important;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.05) !important;
+    pointer-events: auto !important;
+}
+
+/* बटन के अंदर के टेक्स्ट/लिंक को भी क्लिकेबल बनाना */
+div[data-testid="stSidebarNav"] ul li a {
+    pointer-events: auto !important;
+    display: block !important;
+}
+
+/* 🔘 Deploy बटन को टॉप-राइट हेडर लाइन में फिक्स करना */
+div[data-testid="stAppDeployButton"], 
+div[data-testid="stActionButton"],
+.stAppDeployButton {
+    position: fixed !important;
+    top: 10px !important;
+    right: 70px !important; 
+    z-index: 999999 !important; /* 👈 डिप्लॉय बटन को भी ऊपर लाया */
+    pointer-events: auto !important;
+}
+
+/* 🔘 Deploy बटन का ग्रे कलर स्टाइल */
+div[data-testid="stAppDeployButton"] button,
+.stAppDeployButton button {
+    background-color: #757575 !important; 
     color: #FFFFFF !important;            
     border: 1px solid #616161 !important;
     border-radius: 6px !important;
 }
-/* 🔘 3-Dots (Menu Button) को ग्रे करना */
-#MainMenu button, 
-header button[aria-label="Manage app"],
-header button svg {
-    color: #757575 !important;            
-    fill: #757575 !important;
+
+/* 🔘 3-Dots (Menu Button) */
+div[data-testid="stToolbar"] {
+    position: fixed !important;
+    top: 10px !important;
+    right: 15px !important;
+    z-index: 999999 !important;
+    pointer-events: auto !important;
 }
+
+/* 🪟 साइडबार के टॉप गैप को हटाना */
+div[data-testid="stSidebarUserContent"] {
+    padding-top: 0rem !important;
+}
+
+/* ========================================================== */
+
 /* 🟢 सिस्टम स्टेटस वाले कार्ड्स का स्टाइल */
 div[data-testid="element-container"] .stAlert,
 div[data-testid="stNotificationBody"] {
     background-color: #E0F2F1 !important; 
     color: #1A237E !important; 
 }
+
 .block-container{
     padding-top:1rem;
     padding-bottom:1rem;
 }
+
 .metric-card{
     background:white;
     border-radius:15px;
     padding:20px;
     box-shadow:0px 4px 15px rgba(0,0,0,.08);
 }
+
 </style>
 """, unsafe_allow_html=True)
+
 
 # ==========================================================
 # HEADER
