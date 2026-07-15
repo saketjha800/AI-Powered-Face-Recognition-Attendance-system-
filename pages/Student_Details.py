@@ -745,3 +745,15 @@ with col2:
         )
     except Exception as e:
         st.error(f"Excel Export Error: {e}")
+
+
+
+
+
+        # streamlit_app.py के बिल्कुल नीचे (आखिरी लाइनों में) लिखें:
+
+st.write("---") # एक पतली डिवाइडर लाइन बनाने के लिए
+
+# यह बटन मुख्य पेज पर दिखेगा
+if st.button("📊 FACE DATASET PAGE OPEN", use_container_width=True):
+    st.switch_page("pages/Face_Dataset.py")

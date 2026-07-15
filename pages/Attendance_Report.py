@@ -565,3 +565,18 @@ if st.button(
     )
 
     st.rerun()
+
+
+
+
+
+
+
+
+    # streamlit_app.py के बिल्कुल नीचे (आखिरी लाइनों में) लिखें:
+
+st.write("---") # एक पतली डिवाइडर लाइन बनाने के लिए
+
+# यह बटन मुख्य पेज पर दिखेगा
+if st.button("📊 DEVELOPER PAGE ओपन करें", use_container_width=True):
+    st.switch_page("pages/Developer.py")

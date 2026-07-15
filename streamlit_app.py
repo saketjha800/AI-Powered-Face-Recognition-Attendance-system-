@@ -22,6 +22,9 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="collapsed" # 👈 यह साइडबार को ऑटोमैटिक बंद रखेगा जिससे पेज फुल खुलेगा
 )
+
+
+
 st.markdown("""
 <style>
 
@@ -573,3 +576,20 @@ Developed by <b>Saket Jha</b>
 unsafe_allow_html=True
 
 )
+
+
+
+
+
+
+
+
+
+
+# streamlit_app.py के बिल्कुल नीचे (आखिरी लाइनों में) लिखें:
+
+st.write("---") # एक पतली डिवाइडर लाइन बनाने के लिए
+
+# यह बटन मुख्य पेज पर दिखेगा
+if st.button("📊 STUDENT DETAILS PAGE ओपन करें", use_container_width=True):
+    st.switch_page("pages/Student_Details.py")

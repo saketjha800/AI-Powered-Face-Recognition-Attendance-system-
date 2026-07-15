@@ -220,7 +220,7 @@ class FaceDatasetTransformer(VideoTransformerBase):
 # START FACE CAPTURE SECTION
 # ==========================================================
 st.subheader("📸 Live Camera Dataset Collector")
-st.write("कैमरा शुरू करने के लिए नीचे 'Start' पर क्लिक करें। चेहरा दिखते ही सिस्टम अपने आप 100 फ़ोटो क्लिक कर लेगा।")
+st.write(" **Click 'Start' below to launch the camera. The system will automatically capture 100 photos as soon as a face is detected.** / ")
 
 # Haar Cascade डिटेक्टर लोड करें
 try:
@@ -262,7 +262,7 @@ else:
     except Exception as db_err:
         st.warning(f"Database status could not be updated: {db_err}")
         
-    st.success("🎉 फोटो सैंपल सफलतापूर्वक कैप्चर कर लिए गए हैं!")
+    st.success("🎉  Photo sample collected successfully ")
 
 st.divider()
 
@@ -284,3 +284,18 @@ if not summary.empty:
         st.metric("Dataset Ready", completed)
     with c3:
         st.metric("Pending", pending)
+
+
+
+
+
+
+
+
+        # streamlit_app.py के बिल्कुल नीचे (आखिरी लाइनों में) लिखें:
+
+st.write("---") # एक पतली डिवाइडर लाइन बनाने के लिए
+
+# यह बटन मुख्य पेज पर दिखेगा
+if st.button("📊 TRAIN MODEL PAGE open", use_container_width=True):
+    st.switch_page("pages/Train_Model.py")

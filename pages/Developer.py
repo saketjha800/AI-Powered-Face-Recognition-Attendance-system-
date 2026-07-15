@@ -22,7 +22,6 @@ initialize_database()
 # ==========================================================
 # CUSTOM CSS
 # ==========================================================
-
 st.markdown("""
 <style>
 
@@ -38,7 +37,7 @@ st.markdown("""
 
 /* 🔵 साइडबार का बैकग्राउंड */
 [data-testid="stSidebar"] {
-    background-color: #FFFFFF !important; 
+    background-color: #F8F9FA !important; 
 }
 
 /* 🎨 मुख्य हेडिंग का कलर */
@@ -52,7 +51,7 @@ st.markdown("""
 
 /* ⚙️ सफेद हेडर बार */
 div[data-testid="stHeader"], header {
-    background-color: #E3F2FD !important; 
+    background-color: #FFFFFF !important; 
     height: 3.8rem !important; 
     position: fixed !important;
     top: 0 !important;
@@ -116,7 +115,7 @@ div[data-testid="stActionButton"],
 div[data-testid="stAppDeployButton"] button,
 .stAppDeployButton button {
     background-color: #1A237E !important; 
-    color: #E3F2FD !important;            
+    color: #FFFFFF !important;            
     border: none !important;
     border-radius: 4px !important;
     font-weight: bold !important;
@@ -137,67 +136,6 @@ div[data-testid="stToolbar"] {
 
 </style>
 """, unsafe_allow_html=True)
-
-
-
-
-# ==========================================================
-# HEADER
-# ==========================================================
-
-st.title("👨‍💻 Developer Profile")
-
-st.caption(
-    "AI Powered Face Recognition Attendance System"
-)
-
-st.divider()
-
-# ==========================================================
-# PROFILE
-# ==========================================================
-
-col1, col2 = st.columns([1, 3])
-
-with col1:
-    st.image(
-        "assets/profile.jpeg",
-        width=220
-    )
-
-with col2:
-    st.markdown("## Saket Jha")
-    st.write("🎓 B.Tech CSE Student")
-    st.write("🏫 Buddha Institute of Technology, Gorakhpur")
-    st.write("💻 Full Stack Developer")
-    st.write("🤖 AI & Machine Learning Enthusiast")
-    st.write("🌐 Python | Streamlit | OpenCV | MySQL | React | Node.js")
-    
-    # 🔗 पोर्टफोलियो और सोशल मीडिया लिंक्स
-    st.write("") # थोड़ा सा स्पेस देने के लिए
-    btn_col1, btn_col2, btn_col3 = st.columns(3)
-    
-    with btn_col1:
-        st.link_button(
-            "🌐 My Portfolio", 
-            "https://saketjha800.github.io/portfolio/?utm_source=chatgpt.com", # यहाँ अपनी असली लिंक डालें
-            use_container_width=True
-        )
-        
-    with btn_col2:
-        st.link_button(
-            "🐙 GitHub", 
-            "https://github.com/saketjha800", # यहाँ अपनी गिटहब लिंक डालें
-            use_container_width=True
-        )
-        
-    with btn_col3:
-        st.link_button(
-            "💼 LinkedIn", 
-            "https://www.linkedin.com/in/saket-jha-03b167391/", # यहाँ अपनी लिंक्डइन लिंक डालें
-            use_container_width=True
-        )
-
 st.divider()
 
 # ==========================================================
@@ -397,3 +335,15 @@ Version 2.0
 """,
 unsafe_allow_html=True
 )
+
+
+
+
+
+
+
+
+
+
+
+

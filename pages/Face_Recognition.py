@@ -331,7 +331,7 @@ class FaceRecognizerProcessor(VideoProcessorBase):
 # STREAMER UI IN STREAMLIT
 # ==========================================================
 st.subheader("🎥 Live Face Recognition Scanner")
-st.write("स्कैनर को शुरू करने के लिए नीचे **Start** बटन दबाएं।")
+st.write("Please Press  **Start** Button for Start Camra")
 
 ctx = webrtc_streamer(
     key="face-recognition-scan",
@@ -347,7 +347,7 @@ ctx = webrtc_streamer(
 if ctx.state.playing:
     st.success("सफलतापूर्वक कैमरा कनेक्ट हो गया है। स्कैनर लाइव है! 🟢")
 else:
-    st.info("कैमरा स्टैंडबाय पर है। कृपया ऊपर 'Start' बटन दबाएं।")
+    st.info("📷 **Camera is on standby. Please click the 'Start' button above.**")
 
 st.divider()
 
@@ -361,3 +361,16 @@ with col2:
     st.metric("Webcam Mode", "WebRTC (Cloud Optimized)")
 with col3:
     st.metric("Bypass Classifier", "Active" if not is_native_opencv else "Inactive")
+
+
+
+
+
+
+    # streamlit_app.py के बिल्कुल नीचे (आखिरी लाइनों में) लिखें:
+
+st.write("---") # एक पतली डिवाइडर लाइन बनाने के लिए
+
+# यह बटन मुख्य पेज पर दिखेगा
+if st.button("📊ATTENDANCE REPORT PAGE OPEN", use_container_width=True):
+    st.switch_page("pages/Attendance_Report.py")

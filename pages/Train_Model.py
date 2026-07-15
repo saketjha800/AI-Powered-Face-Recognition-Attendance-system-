@@ -317,3 +317,19 @@ try:
         st.dataframe(latest, use_container_width=True, hide_index=True)
 except:
     st.info("Model metadata system is ready.")
+
+
+
+
+
+
+
+
+
+    # streamlit_app.py के बिल्कुल नीचे (आखिरी लाइनों में) लिखें:
+
+st.write("---") # एक पतली डिवाइडर लाइन बनाने के लिए
+
+# यह बटन मुख्य पेज पर दिखेगा
+if st.button("📊 FACE RECOGNITION PAGE open", use_container_width=True):
+    st.switch_page("pages/Face_Recognition.py")
