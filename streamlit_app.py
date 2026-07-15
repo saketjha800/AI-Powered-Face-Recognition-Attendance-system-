@@ -24,15 +24,15 @@ st.set_page_config(
 )
 
 
-
 st.markdown("""
 <style>
 
-/* 🌌 पूरे मुख्य पेज का बैकग्राउंड और लेआउट */
+/* 🌌 पूरे मुख्य पेज का बैकग्राउंड */
 .stApp {
     background-color: #E0E0E0 !important; 
 }
 
+/* मुख्य बॉडी को बिना किसी रुकावट के पूरी स्क्रीन पर खोलना */
 .stMain, .main, [data-testid="stMain"] {
     pointer-events: auto !important;
     display: block !important;
@@ -40,7 +40,7 @@ st.markdown("""
 
 /* 🔵 साइडबार का बैकग्राउंड */
 [data-testid="stSidebar"] {
-    background-color: #FFFFFF !important; 
+    background-color: #F8F9FA !important; 
 }
 
 /* 🎨 मुख्य हेडिंग का कलर */
@@ -49,49 +49,55 @@ st.markdown("""
 }
 
 /* ==========================================================
-   🚨 फिक्स्ड टॉप बार और बटन्स (3-DOTS REMOVED)
+   🚨 टॉप बार को एक जगह FIX (Sticky) करने का उपाय
    ========================================================== */
 
-/* ⚙️ सफेद हेडर बार */
+/* ⚙️ हेडर बार - अब यह स्क्रीन के टॉप पर हमेशा फिक्स रहेगा */
 div[data-testid="stHeader"], header {
-    background-color: #E3F2FD !important; 
+    background-color: #FFFFFF !important; 
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-end !important; 
+    align-items: center !important;
     height: 3.8rem !important; 
+    padding-right: 20px !important;
+    gap: 15px !important; 
+    
+    /* 📌 यहाँ इसे हमेशा के लिए टॉप पर फिक्स कर दिया */
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
     width: 100% !important;
+    
+    /* 🔒 यह लाइन सबसे जरूरी है: हेडर का बैकग्राउंड नीचे के क्लिक नहीं रोकेगा */
     pointer-events: none !important; 
-    z-index: 99999 !important; 
+    z-index: 99999 !important; /* इसे सबसे ऊपर रखने के लिए */
     box-shadow: 0px 2px 8px rgba(0,0,0,0.1) !important; 
 }
 
-/* 📄 हॉरिजॉन्टल नेविगेशन बटन्स - अब इन्हें थोड़ा और दाईं तरफ (right: 120px) खिसका दिया है क्योंकि 3-dots हट गया है */
+/* 📄 पेजों की लिस्ट - हेडर के अंदर नेचुरल फ्लो में (ताकि सेंटर में न भागें) */
 div[data-testid="stSidebarNav"] {
-    position: fixed !important; 
-    top: 14px !important;       
-    right: 125px !important;    /* 👈 Deploy बटन के ठीक बाईं तरफ परफेक्ट स्पेसिंग */
-    left: auto !important;
+    position: static !important; 
     margin: 0 !important;
     padding: 0 !important;
     background: transparent !important;
     width: auto !important;
-    z-index: 100000 !important;
-    pointer-events: auto !important; 
+    pointer-events: auto !important; /* क्लिक चालू */
 }
 
-/* पेजों की लिस्ट को एक लाइन में करना */
+/* पेजों की लिस्ट को एक सीधी लाइन में करना */
 div[data-testid="stSidebarNav"] ul {
     display: flex !important;
     flex-direction: row !important; 
-    gap: 8px !important; 
+    gap: 10px !important; 
     list-style: none !important;
     padding: 0 !important;
     margin: 0 !important;
 }
 
-/* बटन्स का सुंदर लेआउट */
+/* पेजों के बटन्स का सुंदर लेआउट */
 div[data-testid="stSidebarNav"] ul li {
-    padding: 5px 12px !important;
+    padding: 6px 12px !important;
     background-color: #F1F3F4 !important; 
     border: 1px solid #DADCE0 !important;
     border-radius: 4px !important;
@@ -103,45 +109,68 @@ div[data-testid="stSidebarNav"] ul li a span {
     font-weight: 500 !important;
 }
 
-/* 🔘 Deploy बटन की सेटिंग्स - इसे अब कोने के पास (right: 20px) सेट किया है */
+/* 🔘 Deploy बटन की सेटिंग्स */
 div[data-testid="stAppDeployButton"], 
 div[data-testid="stActionButton"],
 .stAppDeployButton {
-    position: fixed !important;
-    top: 14px !important;
-    right: 20px !important; /* 👈 बिल्कुल कोने में फिक्स */
-    left: auto !important;
-    z-index: 100000 !important;
+    position: static !important; 
+    margin: 0 !important;
     pointer-events: auto !important;
 }
 
 div[data-testid="stAppDeployButton"] button,
 .stAppDeployButton button {
     background-color: #1A237E !important; 
-    color: #E3F2FD !important;            
+    color: #FFFFFF !important;            
     border: none !important;
     border-radius: 4px !important;
     font-weight: bold !important;
     height: 32px !important;
 }
 
-/* 🔘 3-Dots (Menu Button) को पूरी तरह छुपाया */
+/* 🔘 3-Dots (Menu Button) की सेटिंग्स */
 div[data-testid="stToolbar"] {
-    display: none !important; /* 👈 3-dots अब नहीं दिखेगा */
+    position: static !important; 
+    margin: 0 !important;
+    pointer-events: auto !important;
 }
 
-/* 📦 मुख्य कंटेंट का स्पेसिंग */
+div[data-testid="stToolbar"] button svg {
+    fill: #5F6368 !important; 
+    color: #5F6368 !important;
+}
+
+/* 🪟 साइडबार के टॉप गैप को हटाना */
+div[data-testid="stSidebarUserContent"] {
+    padding-top: 0rem !important;
+}
+
+/* 📦 मुख्य कंटेंट का स्पेसिंग फिक्स ताकि वह टॉप बार के नीचे न दबे */
 .block-container {
     padding-top: 5rem !important; 
     padding-bottom: 1rem !important;
     pointer-events: auto !important; 
 }
 
+/* ========================================================== */
+
+/* 🟢 सिस्टम स्टेटस वाले कार्ड्स का स्टाइल */
+div[data-testid="element-container"] .stAlert,
+div[data-testid="stNotificationBody"] {
+    background-color: #FFFFFF !important; 
+    color: #202124 !important; 
+    border-left: 5px solid #1A237E !important;
+}
+
+.metric-card{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    box-shadow:0px 4px 15px rgba(0,0,0,.08);
+}
+
 </style>
 """, unsafe_allow_html=True)
-
-
-
 # ==========================================================
 # SIDEBAR
 # ==========================================================

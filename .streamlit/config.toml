@@ -9,3 +9,5 @@ font = "sans serif"
 headless = true
 enableCORS = false
 enableXsrfProtection = false
+[client]
+sidebarState = "expanded"  # 👈 यह साइडबार को कभी बंद नहीं होने देगा
